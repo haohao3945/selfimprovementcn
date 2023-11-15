@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>自我提升应用</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<meta name="description" content="探索自我提升挑战和解决问题策略的头脑风暴表。增强生活技能，应对挑战，并就事件进行反思以促进成长。获取随机挑战以丰富个人发展之旅。" />
+
+	<style>
+		.custom-border {
+			border: 2px solid #3498db; /* 根据需要更改颜色 */
+			border-radius: 15px; /* 调整所需的边框半径 */
+			padding: 20px; /* 提升可视效果的填充 */
+		}
+	</style>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <div class="container text-center">
+		<h1>自我提升应用的工具...</h1>
+		<br><br>
+	</div>
+	
+	<div class="container text-center custom-border">
+		<h1>头脑风暴</h1>
+		<p>提出正确的问题，快速帮助你解决关键问题。通过这个框架，你将了解下一步解决困难问题所需的步骤。</p><br><br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>事件</th>
+                    <th>结果</th>
+                    <th>你认为怎么样</th>
+                    <th>进展顺利的事情</th>
+                    <th>需要改进的事情</th>
+                    <th>即时行动计划</th>
+                </tr>
+            </thead>
+            <tbody id="retrospectiveTable">
+                <tr style="font-style:italic;">
+                    <td>例如：项目进度不如预期</td>
+                    <td>导致项目截止日期延迟</td>
+                    <td>为项目设立目标的时侯太过于理想化了</td>
+                    <td>每天坚持有进度。有学习到新的东西</td>
+                    <td>改进对项目的期待和处理方式。具体为每3天一个复盘和容错期。同时需要暂时不看剧，确保项目有在推进</td>
+                    <td>1.3天复盘一次项目进度<br/>2.把看剧的20分钟加在做项目的时间，一个星期后观察结果。</td>
+                </tr>
+                <tr>
+                    <td><textarea class="form-control"></textarea></td>
+                    <td><textarea class="form-control"></textarea></td>
+                    <td><textarea class="form-control"></textarea></td>
+                    <td><textarea class="form-control"></textarea></td>
+                    <td><textarea class="form-control"></textarea></td>
+                    <td><textarea class="form-control"></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+        <button id="addRowBtn" class="btn btn-primary">添加行</button>
+    </div>
+	<div class="container mt-5 text-center custom-border">
+		<h1 class="mb-4">自我提升挑战</h1>
+		<p>
+			自我提升需要涵盖生活的各个方面，如职业、人际关系、健康、财务安全和社交技能。<br>
+			点击获取改善生活的新挑战想法。
+		</p>
+		<div class="row justify-content-center">
+			<div class="col-md-6 mb-4">
+				<div class="card">
+					<div class="card-body text-center custom-border">
+						<h5 class="card-title">随机挑战</h5>
+						<p class="card-text">
+							<button class="btn btn-primary" id="randomChallengeBtn">获取挑战</button>
+						</p>
+						<p class="card-text" id="randomChallengeText"></p>
+					</div>
+				</div>
+				</div>
+			</div>
+	</div>
+	<br>
+	<br>
+	<div class="container text-center custom-border">
+		<form id="feedbackForm" action="https://script.google.com/macros/s/AKfycbxHQefQKgU5bVNMaDdbp_oP8mge0U2UAcvx2Y9M0c8kOJxpuCfJUbimgESUCeKJrZ2blg/exec" method="POST" >
+			<div class="form-group">
+				<label for="feedbackInput">请提供反馈，让我们了解需要改进的内容：</label>
+				<textarea style="max-width:600px;margin:auto;" id="moreDetails" name="details" class="form-control" placeholder="您的反馈"></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary">提交</button>
+		</form>
+	</div>
+
+    <script src="app.js"></script> 
+</body>
+</html>
