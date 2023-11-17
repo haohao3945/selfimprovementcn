@@ -11,9 +11,11 @@
 			border-radius: 15px; /* 调整所需的边框半径 */
 			padding: 20px; /* 提升可视效果的填充 */
 		}
-
 		textarea{
-			min-height:400px;
+			min-height:150px;
+		}
+		td{
+			max-width:200px;
 		}
 	</style>
 </head>
@@ -27,8 +29,8 @@
 	</div>
 	
 	<div class="container text-center custom-border">
-		<h1>头脑风暴</h1>
-		<p>提出正确的问题，快速帮助你解决关键问题。通过这个框架，你将了解下一步解决困难问题所需的步骤。</p><br><br>
+        <h1>头脑风暴</h1>
+        <p>提出正确的问题，快速帮助你解决关键问题。通过这个框架，你将了解下一步解决困难问题所需的步骤。</p><br><br>
         <table class="table">
             <thead>
                 <tr>
@@ -38,6 +40,7 @@
                     <th>进展顺利的事情</th>
                     <th>需要改进的事情</th>
                     <th>即时行动计划</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody id="retrospectiveTable">
@@ -47,7 +50,8 @@
                     <td>为项目设立目标的时侯太过于理想化了</td>
                     <td>每天坚持有进度。有学习到新的东西</td>
                     <td>改进对项目的期待和处理方式。具体为每3天一个复盘和容错期。同时需要暂时不看剧，确保项目有在推进</td>
-                    <td>1.3天复盘一次项目进度<br/>2.把看剧的20分钟加在做项目的时间，一个星期后观察结果。</td>
+                    <td>1.3天复盘一次项目进度<br/>2.把看剧的20分钟加在做项目的时间，一个星期后观察结果.</td>
+                    <td><button class="btn btn-danger" onclick="deleteRow(this)">删除行</button></td>
                 </tr>
                 <tr>
                     <td><textarea class="form-control"></textarea></td>
@@ -56,10 +60,14 @@
                     <td><textarea class="form-control"></textarea></td>
                     <td><textarea class="form-control"></textarea></td>
                     <td><textarea class="form-control"></textarea></td>
+                    <td>
+                        <button class="btn btn-primary" onclick="confirmRow(this)">确认</button>
+                        <button class="btn btn-danger" onclick="deleteRow(this)">删除行</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
-        <button id="addRowBtn" class="btn btn-primary">添加行</button>
+        <button id="addRowBtn" class="btn btn-primary" onclick="addRow()">添加行</button>
     </div>
 	<div class="container mt-5 text-center custom-border">
 		<h1 class="mb-4">自我提升挑战</h1>
