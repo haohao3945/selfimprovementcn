@@ -329,18 +329,7 @@ var challengesData =
 }
 
 
-		// Function for the table 
-        document.getElementById('addRowBtn').addEventListener('click', function() {
-            var table = document.getElementById('retrospectiveTable');
-            var newRow = table.insertRow(table.rows.length);
 
-            for (var i = 0; i < 6; i++) {
-                var cell = newRow.insertCell(i);
-                var textarea = document.createElement('textarea');
-                textarea.className = 'form-control';
-                cell.appendChild(textarea);
-            }
-        });
 		
      // Function to get a random challenge
         function getRandomChallenge() {
@@ -379,4 +368,77 @@ var challengesData =
         // Initial display
         displayCurrentChallenge();
 		
-		// Implementing feedback form
+		
+		//Adjustment for the table 
+		function confirmRow(button) {
+			var row = button.parentNode.parentNode;
+			var textareas = row.getElementsByTagName("textarea");
+			var isEmpty = true;
+
+			for (var i = 0; i < textareas.length; i++) {
+				if (textareas[i].value.trim() !== "") {
+					isEmpty = false;
+					break;
+				}
+			}
+
+			if (isEmpty) {
+				alert("请填写行中的至少一个文本框");
+			} else {
+				console.log("textarea.length = ", textareas.length);
+
+				// Convert NodeList to array to avoid dynamic changes
+				var textareaArray = Array.from(textareas);
+
+				for (var i = 0; i < textareaArray.length; i++) {
+					// Add key listener for Enter key
+					textareaArray[i].addEventListener("keydown", function (event) {
+						if (event.key === "Enter") {
+							// Prevent default behavior (new line in textarea)
+							event.preventDefault();
+
+							// Append a line break to the value
+							this.value += "\n";
+						}
+					});
+
+					// Convert textarea content to HTML
+					textareaArray[i].outerHTML = "<p>" + textareaArray[i].value.replace(/\n/g, "<br>") + "</p>";
+					console.log("textarea", i + 1, "= ", textareaArray[i].value);
+				}
+				button.style.display = "none";
+			}
+		}
+        function deleteRow(button) {
+            var row = button.parentNode.parentNode;
+            row.remove();
+        }
+
+        function addRow() {
+            var table = document.getElementById("retrospectiveTable");
+            var newRow = table.insertRow(table.rows.length);
+            var cells = [];
+
+            for (var i = 0; i < 6; i++) {
+                cells.push(newRow.insertCell(i));
+                cells[i].innerHTML = '<textarea class="form-control"></textarea>';
+            }
+
+            var confirmButton = document.createElement("button");
+            confirmButton.innerHTML = "确认";
+            confirmButton.className = "btn btn-primary";
+            confirmButton.onclick = function() {
+                confirmRow(confirmButton);
+            };
+
+            var deleteButton = document.createElement("button");
+            deleteButton.innerHTML = "删除行";
+            deleteButton.className = "btn btn-danger";
+            deleteButton.onclick = function() {
+                deleteRow(deleteButton);
+            };
+
+            cells.push(newRow.insertCell(6));
+            cells[6].appendChild(confirmButton);
+            cells[6].appendChild(deleteButton);
+        }
