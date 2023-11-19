@@ -337,11 +337,11 @@ var challengesData =
         .then(response => response.json())
         .then(data => {
             // Handle the data as needed
-            console.log(data);
+            console.log('');
         })
         .catch(error => {
             // Handle errors
-            console.error('Error fetching data:', error);
+            console.error('');
         });
 };
 		
