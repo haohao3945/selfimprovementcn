@@ -329,7 +329,21 @@ var challengesData =
 }
 
 
-
+//
+	// track view 
+	window.onload = function() {
+    // Fetch the URL
+    fetch('https://script.google.com/macros/s/AKfycbz7DtjhqlRZf7cqnLet4kTjmGcHnqi1AT0wIlpqwfS5Y467p8DiE01oHb_22GbYBY91dw/exec?view=1')
+        .then(response => response.json())
+        .then(data => {
+            // Handle the data as needed
+            console.log(data);
+        })
+        .catch(error => {
+            // Handle errors
+            console.error('Error fetching data:', error);
+        });
+};
 		
      // Function to get a random challenge
         function getRandomChallenge() {
