@@ -329,7 +329,6 @@ var challengesData =
 }
 
 
-//
 	// track view 
 	window.onload = function() {
     // Fetch the URL
@@ -337,11 +336,11 @@ var challengesData =
         .then(response => response.json())
         .then(data => {
             // Handle the data as needed
-            console.log('');
+            console.log(data);
         })
         .catch(error => {
             // Handle errors
-            console.error('');
+            console.error('Error fetching data:', error);
         });
 };
 		
