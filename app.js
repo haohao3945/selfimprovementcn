@@ -328,12 +328,13 @@ var challengesData =
 
 }
 
-
 	// track view 
 	window.onload = function() {
     // Fetch the URL
-    fetch('https://script.google.com/macros/s/AKfycbz7DtjhqlRZf7cqnLet4kTjmGcHnqi1AT0wIlpqwfS5Y467p8DiE01oHb_22GbYBY91dw/exec?view=1')
-        .then(response => response.json())
+    fetch('https://script.google.com/macros/s/AKfycbxMdAmgo9_wsiUIU23pRZpeYuHqd50RdKukED3w1Q_fRmyuGrqQBEcavc-WxI-7PQQg8A/exec?view=2')
+        .then(response => response.json()
+		
+		)
         .then(data => {
             // Handle the data as needed
             console.log(data);
@@ -342,8 +343,59 @@ var challengesData =
             // Handle errors
             console.error('Error fetching data:', error);
         });
+		addAppToHomeScreen()
+	
 };
-		
+
+	// add to homescreen function 
+function addAppToHomeScreen() {
+  var userChoice; // Declare userChoice in a higher scope
+
+  setTimeout(function () {
+    fetch('https://script.google.com/macros/s/AKfycbxMdAmgo9_wsiUIU23pRZpeYuHqd50RdKukED3w1Q_fRmyuGrqQBEcavc-WxI-7PQQg8A/exec?home=2')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+
+    if (document.visibilityState !== "hidden") {
+      // Trigger the Bootstrap modal
+      $('#addAppModal').modal('show');
+
+      // Handle button clicks inside the modal
+      $('#addAppModal .btn-primary').on('click', function() {
+        userChoice = true;
+        console.log(userChoice);
+        // Close the modal manually
+        $('#addAppModal').modal('hide');
+
+        // Add your logic here for the positive choice
+        fetch('https://script.google.com/macros/s/AKfycbxMdAmgo9_wsiUIU23pRZpeYuHqd50RdKukED3w1Q_fRmyuGrqQBEcavc-WxI-7PQQg8A/exec?cta=2')
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+          });
+      });
+
+      $('#addAppModal .btn-secondary').on('click', function() {
+        userChoice = false;
+        console.log(userChoice);
+        // Close the modal manually
+        $('#addAppModal').modal('hide');
+
+        // Add your logic here for the negative choice
+      });
+    }
+  }, 50000); // 50 seconds
+}
+
+
      // Function to get a random challenge
         function getRandomChallenge() {
             var randomIndex = Math.floor(Math.random() * challengesData.challenges.length);
